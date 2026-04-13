@@ -82,5 +82,28 @@ def analyze(
     console.print(f"[bold green]Analysis complete.[/bold green]")
     console.print(f"Detected {len(all_routes)} routes. Outputs saved to [bold]{out_path}[/bold]")
 
+@app.command()
+def ui(
+    output_dir: str = typer.Option("analysis_output", "--dir", "-d", help="Directory containing the visualization files"),
+    port: int = typer.Option(8000, "--port", "-p", help="Port to run the UI server on"),
+):
+    """
+    Launch the interactive Dashboard UI.
+    """
+    import uvicorn
+    import pathlib
+    from visualizer.server import create_app
+    
+    out_path = pathlib.Path(output_dir).resolve()
+    if not out_path.exists():
+        console.print(f"[bold red]Error:[/bold red] Output directory {output_dir} does not exist.")
+        raise typer.Exit(code=1)
+        
+    dashboard_app = create_app(str(out_path))
+    console.print(f"[bold green]Starting The-Visualizer Dashboard...[/bold green]")
+    console.print(f"Directory: [bold]{out_path}[/bold]")
+    console.print(f"Dashboard URL: [bold blue]http://localhost:{port}[/bold blue]")
+    uvicorn.run(dashboard_app, host="127.0.0.1", port=port)
+
 if __name__ == "__main__":
     app()
