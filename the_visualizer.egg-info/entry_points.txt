@@ -1,0 +1,2 @@
+[console_scripts]
+visualizer = visualizer.cli:app
