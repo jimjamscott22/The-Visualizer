@@ -57,14 +57,14 @@ python -m visualizer --help
 
 ## 💻 Usage
 
-To analyze a FastAPI project codebase, point the CLI to a directory using the `--path` (or anonymous) argument. You can optionally specify an output directory with `-o` or `--output`.
+To analyze a FastAPI project codebase, point the CLI to a directory using the `analyze` command. You can optionally specify an output directory with `-o` or `--output`.
 
 ```bash
 # Using uv:
-uv run visualizer /path/to/fastapi_app -o ./analysis_output
+uv run visualizer analyze /path/to/fastapi_app -o ./analysis_output
 
 # Using pip:
-visualizer /path/to/fastapi_app -o ./analysis_output
+visualizer analyze /path/to/fastapi_app -o ./analysis_output
 ```
 
 ### Try it with the Mock App!
@@ -72,7 +72,18 @@ The codebase includes a small mock FastAPI app inside `tests/mock_fastapi_app` t
 
 ```bash
 # Run the analyzer on the mock app
-uv run visualizer tests/mock_fastapi_app -o tests/output
+uv run visualizer analyze tests/mock_fastapi_app -o tests/output
+```
+
+### 🖥️ Launching the Dashboard UI
+To interactively explore the dependency graphs and request flows, you can launch the local web Dashboard UI.
+
+```bash
+# Using uv:
+uv run visualizer ui
+
+# Using pip:
+visualizer ui
 ```
 
 ---
