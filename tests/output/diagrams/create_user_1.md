@@ -1,4 +1,4 @@
-```mermaid
+```mermaid.js
 sequenceDiagram
     Client->>API: POST /users/
     API->>Service: create_user_service()

@@ -1,10 +1,10 @@
 {
     "database": [],
+    "services": [
+        "database"
+    ],
     "main": [
         "fastapi",
         "services"
-    ],
-    "services": [
-        "database"
     ]
 }

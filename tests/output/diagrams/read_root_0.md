@@ -1,4 +1,4 @@
-```mermaid
+```mermaid.js
 sequenceDiagram
     Client->>API: GET /
     API->>Service: get()

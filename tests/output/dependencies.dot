@@ -2,9 +2,9 @@ digraph ProjectDependencies {
     rankdir=LR;
     node [shape=box, style=filled, fillcolor=lightgrey];
     "database" [label="database"];
+    "services" [label="services"];
+    "services" -> "database";
     "main" [label="main"];
     "main" -> "fastapi";
     "main" -> "services";
-    "services" [label="services"];
-    "services" -> "database";
 }
